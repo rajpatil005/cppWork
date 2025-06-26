@@ -18,6 +18,8 @@ class linkedlist{
     void deleteAtHead();
     void deleteAtPos(int);
     void deleteAtEnd();
+    void deleteByVal(int);
+    void deleteAll();
     
     void show();
 };
@@ -124,6 +126,36 @@ void linkedlist::deleteAtEnd(){
     delete tempHead->next;
     tempHead->next= nullptr;
 }
+void linkedlist::deleteByVal(int v){
+    if(head==nullptr){
+        cout<< "Linked-list is empty!";
+        return;
+    }
+    
+    if(head->data==v){
+        deleteAtHead();
+        return;
+    }
+    
+    Node* tempHead= head;
+    while(tempHead->next!= nullptr && tempHead->next->data!= v){
+        tempHead= tempHead->next;
+    }
+    
+    if(tempHead->next== nullptr){
+        cout<< "Value not found!";
+        return;
+    }
+    
+    Node* delNode= tempHead->next;
+    tempHead->next= tempHead->next->next;
+    delete delNode;
+}
+void linkedlist::deleteAll(){
+    while(head!= nullptr){
+        deleteAtHead();
+    }
+}
 
 void linkedlist::show(){
     for(Node* p=head; p; p=p->next){
@@ -144,6 +176,8 @@ int main() {
     ll.deleteAtHead();
     ll.deleteAtPos(1);
     ll.deleteAtEnd();
+    ll.deleteByVal(2);
+    ll.deleteAll();
     ll.show();
     
     return 0;
