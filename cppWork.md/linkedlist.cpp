@@ -22,6 +22,8 @@ class linkedlist{
     void deleteAll();
     
     void show();
+    void length();
+    void search(int);
 };
 
 void linkedlist::insertAtHead(int d){
@@ -163,6 +165,32 @@ void linkedlist::show(){
     }
     cout<< "Null Pointer"<< endl;
 }
+void linkedlist::length(){
+    Node* tempHead= head;
+    int cnt=0;
+    
+    while(tempHead!= nullptr){
+        tempHead= tempHead->next;
+        cnt++;
+    }
+    cout<< cnt << endl;
+}
+void linkedlist::search(int v){
+    if(head==nullptr){
+        cout<< "Linked-list is empty!" << endl;
+        return;
+    }
+    
+    Node* tempHead= head;
+    while(tempHead!= nullptr){
+        if(tempHead->data== v){
+            cout<< "True" << endl;
+            return;
+        }
+        tempHead= tempHead->next;
+    }
+    cout<< "False" << endl;
+}
 
 int main() {
     linkedlist ll;
@@ -172,6 +200,9 @@ int main() {
     ll.insertAtEnd(3);
     ll.insertAtPos(3, 4);
     ll.show();
+    
+    ll.length();
+    ll.search(3);
     
     ll.deleteAtHead();
     ll.deleteAtPos(1);
