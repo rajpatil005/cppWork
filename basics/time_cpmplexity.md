@@ -14,5 +14,5 @@ Space complexity measures extra memory used.
 ```cpp
 for(int i=0; i<n; i++) { } // O(n)
 for(int i=0; i<n; i++)
-  for(int j=0; j<n; j++) { } // O(n²)
+for(int j=0; j<n; j++) { } // O(n²)
 ```
